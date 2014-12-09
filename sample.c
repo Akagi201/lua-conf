@@ -16,9 +16,11 @@ int main(void) {
     int i = 0;
     int ret = 0;
     char expr[64] = {0};
-    const char *image;
+    char *image;
 
-    conf_init("config.lua");
+    ret = conf_init("config.lua");
+
+    printf("ret: %d\n", ret);
 
     ret = conf_get_int("settings.resolution.width", &width);
 

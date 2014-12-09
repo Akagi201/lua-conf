@@ -12,11 +12,10 @@
 #include <lualib.h>
 
 #define MAX_LUA_EXPR (256)
-#define MAX_LUA_VALUE (256)
 
 int conf_init(const char *filename);
 
-int conf_get_string(const char *expr, const char *out);
+int conf_get_string(const char *expr, char *out);
 
 int conf_get_double(const char *expr, double *out);
 

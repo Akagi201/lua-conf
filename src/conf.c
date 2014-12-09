@@ -15,7 +15,7 @@ static lua_State *L;
  */
 int conf_init(const char *filename) {
 
-    if (!L || !filename){
+    if (!filename){
         return EINVAL;
     }
 
@@ -43,7 +43,7 @@ int conf_init(const char *filename) {
  * @brief Evaluates a Lua expression and returns the string result.
  * @return errno: error / 0: success
  */
-int conf_get_string(const char *expr, const char *out){
+int conf_get_string(const char *expr, char *out){
     int ret = 0;
     char buf[MAX_LUA_EXPR] = {0};
 
@@ -57,7 +57,7 @@ int conf_get_string(const char *expr, const char *out){
         // Get the value of the global variable
         lua_getglobal(L, "expr");
         if (lua_isstring(L, -1)) {
-            out = lua_tostring(L, -1);
+            out = (char *)lua_tostring(L, -1);
             ret = 0;
         }
 
