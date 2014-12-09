@@ -1,3 +1,4 @@
 language: c
-compiler: gcc
+compiler: clang
+install: brew update; brew install lua
 script: ./start_build.sh; cd build; make
