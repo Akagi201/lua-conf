@@ -16,7 +16,7 @@ int main(void) {
     int i = 0;
     int ret = 0;
     char expr[64] = {0};
-    char *image;
+    const char *image;
 
     ret = conf_init("config.lua");
 
@@ -41,7 +41,7 @@ int main(void) {
     for (i = 0; i < image_count; ++i) {
         memset(expr, 0, sizeof(expr));
         snprintf(expr, sizeof(expr), "settings.images[%d]", i + 1);
-        ret = conf_get_string(expr, image);
+        ret = conf_get_string(expr, &image);
         printf("ret: %d, settings.images[%d] = %s\n", ret, i + 1, image);
     }
     conf_free();
