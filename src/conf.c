@@ -90,7 +90,7 @@ int conf_get_double(const char *expr, double *out) {
         /* Get the value of the global varibable */
         lua_getglobal(L, "expr");
         if (lua_isnumber(L, -1)) {
-            *out = lua_tonumber(<#L#>, -1);
+            *out = lua_tonumber(L, -1);
             ret = 0;
         }
 
@@ -116,7 +116,7 @@ int conf_get_int(const char *expr, int *out) {
         return EINVAL;
     }
 
-    ret = conf_get_double(L, expr, &d);
+    ret = conf_get_double(expr, &d);
     if (0 == ret) {
         *out = (int)d;
     }
@@ -139,10 +139,10 @@ int conf_get_bool(const char *expr, int *out) {
     /* Assign the Lua expression to a Lua global variable. */
     snprintf(buf, sizeof(buf), "expr=%s", expr);
 
-    if (!luaL_dostring(<#L#>, buf)) {
+    if (!luaL_dostring(L, buf)) {
         /* Get the value of the global varibable */
         lua_getglobal(L, "expr");
-        if (lua_isboolean(<#L#>, -1)) {
+        if (lua_isboolean(L, -1)) {
             *out = lua_toboolean(L, -1);
             ret = 0;
         }
