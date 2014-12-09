@@ -1,0 +1,11 @@
+{
+  "name": "lua-conf",
+  "version": "0.1.0",
+  "repo": "Akagi201/lua-conf",
+  "description": "Use lua as config file",
+  "license": "MIT",
+  "src": [
+    "src/conf.c",
+    "src/conf.h"
+  ]
+}
